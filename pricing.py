@@ -14,6 +14,11 @@ def calculate_tax(amount):
     return tax_cents / 100
 
 
+def calculate_loyalty_discount(is_loyalty_member):
+    """Return the loyalty-discount percentage."""
+    return 5 if is_loyalty_member else 0
+
+
 def calculate_final_price(price, quantity, discount_pct=0):
     """Return the final price for `quantity` units of `price`, including
     an optional percentage discount and sales tax.
