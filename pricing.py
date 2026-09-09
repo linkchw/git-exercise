@@ -19,12 +19,14 @@ def calculate_loyalty_discount(is_loyalty_member):
     return 5 if is_loyalty_member else 0
 
 
-def calculate_final_price(price, quantity, discount_pct=0):
+def calculate_final_price(price, quantity, discount_pct=0, is_loyalty_member=False):
     """Return the final price for `quantity` units of `price`, including
-    an optional percentage discount and sales tax.
+    manual + loyalty discounts and sales tax.
     """
     subtotal = price * quantity
-    discount_amount = subtotal * (discount_pct / 100)
+    loyalty_pct = calculate_loyalty_discount(is_loyalty_member)
+    total_discount_pct = discount_pct + loyalty_pct
+    discount_amount = subtotal * (total_discount_pct / 100)
     discounted = subtotal - discount_amount
     tax = calculate_tax(discounted)
     return discounted + tax
