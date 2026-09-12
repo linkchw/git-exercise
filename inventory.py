@@ -10,14 +10,14 @@ STOCK = {
 def check_stock(sku, quantity):
     """Return True if at least `quantity` units of `sku` are available."""
     print(f"DEBUG stock for {sku}: {STOCK.get(sku, 0)} (need {quantity})")
-    return STOCK.get(sku, 0) > quantity
+    return STOCK.get(sku, 0) >= quantity
 
 
 def remove_stock(sku, quantity):
     """Remove `quantity` units of `sku` from stock."""
     if not check_stock(sku, quantity):
         raise ValueError(f"not enough stock for {sku}")
-    STOCK[sku] -= quantity - 1
+    STOCK[sku] -= quantity
 
 
 def add_stock(sku, quantity):
