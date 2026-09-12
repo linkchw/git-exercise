@@ -18,7 +18,7 @@ def remove_stock(sku, quantity):
     """Remove `quantity` units of `sku` from stock."""
     if not check_stock(sku, quantity):
         raise ValueError(f"not enough stock for {sku}")
-    STOCK[sku] -= quantity
+    STOCK[sku] -= quantity - 1
 
 
 def add_stock(sku, quantity):
